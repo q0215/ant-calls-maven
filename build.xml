@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	default="zip"
+	basedir="."
+	xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+	<property name="test" value="false"/>
+
+	<target name="init" description="initialize directories">
+	</target>
+
+	<target name="install" depends="init" description="maven install">
+		<artifact:mvn>
+			<arg value="install"/>
+		</artifact:mvn>
+	</target>
+
+	<target name="compile" depends="install" description="compile java sources">
+	</target>
+
+	<target name="jar" depends="compile" description="make jar archive">
+	</target>
+
+	<target name="replace" depends="jar" if="${test}" description="replace properties">
+	</target>
+
+	<target name="zip" depends="replace" description="make zip archive">
+	</target>
+</project>
